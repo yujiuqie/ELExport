@@ -1,0 +1,439 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0652DB7B1D9287720098A2E4 /* ELExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 0652DB7A1D9287720098A2E4 /* ELExport.m */; };
+		06A713F61D92330F002D75D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A713F51D92330F002D75D3 /* main.m */; };
+		06A713F91D92330F002D75D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A713F81D92330F002D75D3 /* AppDelegate.m */; };
+		06A713FC1D92330F002D75D3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A713FB1D92330F002D75D3 /* ViewController.m */; };
+		06A713FF1D92330F002D75D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06A713FD1D92330F002D75D3 /* Main.storyboard */; };
+		06A714011D92330F002D75D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06A714001D92330F002D75D3 /* Assets.xcassets */; };
+		06A714041D92330F002D75D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06A714021D92330F002D75D3 /* LaunchScreen.storyboard */; };
+		06A7140F1D92330F002D75D3 /* ELogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A7140E1D92330F002D75D3 /* ELogTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		06A7140B1D92330F002D75D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06A713E91D92330E002D75D3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06A713F01D92330E002D75D3;
+			remoteInfo = ELog;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0652DB781D9287720098A2E4 /* ELConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELConfig.h; sourceTree = "<group>"; };
+		0652DB791D9287720098A2E4 /* ELExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELExport.h; sourceTree = "<group>"; };
+		0652DB7A1D9287720098A2E4 /* ELExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELExport.m; sourceTree = "<group>"; };
+		06A713F11D92330E002D75D3 /* ELog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		06A713F51D92330F002D75D3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		06A713F71D92330F002D75D3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		06A713F81D92330F002D75D3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		06A713FA1D92330F002D75D3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		06A713FB1D92330F002D75D3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		06A713FE1D92330F002D75D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		06A714001D92330F002D75D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		06A714031D92330F002D75D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		06A714051D92330F002D75D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06A7140A1D92330F002D75D3 /* ELogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ELogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		06A7140E1D92330F002D75D3 /* ELogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ELogTests.m; sourceTree = "<group>"; };
+		06A714101D92330F002D75D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06A713EE1D92330E002D75D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06A714071D92330F002D75D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0652DB771D9287720098A2E4 /* ELExport */ = {
+			isa = PBXGroup;
+			children = (
+				0652DB781D9287720098A2E4 /* ELConfig.h */,
+				0652DB791D9287720098A2E4 /* ELExport.h */,
+				0652DB7A1D9287720098A2E4 /* ELExport.m */,
+			);
+			path = ELExport;
+			sourceTree = "<group>";
+		};
+		06A713E81D92330E002D75D3 = {
+			isa = PBXGroup;
+			children = (
+				0652DB771D9287720098A2E4 /* ELExport */,
+				06A713F31D92330F002D75D3 /* ELog */,
+				06A7140D1D92330F002D75D3 /* ELogTests */,
+				06A713F21D92330E002D75D3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		06A713F21D92330E002D75D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06A713F11D92330E002D75D3 /* ELog.app */,
+				06A7140A1D92330F002D75D3 /* ELogTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		06A713F31D92330F002D75D3 /* ELog */ = {
+			isa = PBXGroup;
+			children = (
+				06A713F71D92330F002D75D3 /* AppDelegate.h */,
+				06A713F81D92330F002D75D3 /* AppDelegate.m */,
+				06A713FA1D92330F002D75D3 /* ViewController.h */,
+				06A713FB1D92330F002D75D3 /* ViewController.m */,
+				06A713FD1D92330F002D75D3 /* Main.storyboard */,
+				06A714001D92330F002D75D3 /* Assets.xcassets */,
+				06A714021D92330F002D75D3 /* LaunchScreen.storyboard */,
+				06A714051D92330F002D75D3 /* Info.plist */,
+				06A713F41D92330F002D75D3 /* Supporting Files */,
+			);
+			path = ELog;
+			sourceTree = "<group>";
+		};
+		06A713F41D92330F002D75D3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				06A713F51D92330F002D75D3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		06A7140D1D92330F002D75D3 /* ELogTests */ = {
+			isa = PBXGroup;
+			children = (
+				06A7140E1D92330F002D75D3 /* ELogTests.m */,
+				06A714101D92330F002D75D3 /* Info.plist */,
+			);
+			path = ELogTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		06A713F01D92330E002D75D3 /* ELog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06A714131D92330F002D75D3 /* Build configuration list for PBXNativeTarget "ELog" */;
+			buildPhases = (
+				06A713ED1D92330E002D75D3 /* Sources */,
+				06A713EE1D92330E002D75D3 /* Frameworks */,
+				06A713EF1D92330E002D75D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ELog;
+			productName = ELog;
+			productReference = 06A713F11D92330E002D75D3 /* ELog.app */;
+			productType = "com.apple.product-type.application";
+		};
+		06A714091D92330F002D75D3 /* ELogTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06A714161D92330F002D75D3 /* Build configuration list for PBXNativeTarget "ELogTests" */;
+			buildPhases = (
+				06A714061D92330F002D75D3 /* Sources */,
+				06A714071D92330F002D75D3 /* Frameworks */,
+				06A714081D92330F002D75D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				06A7140C1D92330F002D75D3 /* PBXTargetDependency */,
+			);
+			name = ELogTests;
+			productName = ELogTests;
+			productReference = 06A7140A1D92330F002D75D3 /* ELogTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		06A713E91D92330E002D75D3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = AlfredJiang;
+				TargetAttributes = {
+					06A713F01D92330E002D75D3 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 6XJR89BS6M;
+					};
+					06A714091D92330F002D75D3 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 6XJR89BS6M;
+						TestTargetID = 06A713F01D92330E002D75D3;
+					};
+				};
+			};
+			buildConfigurationList = 06A713EC1D92330E002D75D3 /* Build configuration list for PBXProject "ELog" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 06A713E81D92330E002D75D3;
+			productRefGroup = 06A713F21D92330E002D75D3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				06A713F01D92330E002D75D3 /* ELog */,
+				06A714091D92330F002D75D3 /* ELogTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		06A713EF1D92330E002D75D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06A714041D92330F002D75D3 /* LaunchScreen.storyboard in Resources */,
+				06A714011D92330F002D75D3 /* Assets.xcassets in Resources */,
+				06A713FF1D92330F002D75D3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06A714081D92330F002D75D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		06A713ED1D92330E002D75D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0652DB7B1D9287720098A2E4 /* ELExport.m in Sources */,
+				06A713FC1D92330F002D75D3 /* ViewController.m in Sources */,
+				06A713F91D92330F002D75D3 /* AppDelegate.m in Sources */,
+				06A713F61D92330F002D75D3 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06A714061D92330F002D75D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06A7140F1D92330F002D75D3 /* ELogTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		06A7140C1D92330F002D75D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 06A713F01D92330E002D75D3 /* ELog */;
+			targetProxy = 06A7140B1D92330F002D75D3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		06A713FD1D92330F002D75D3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06A713FE1D92330F002D75D3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		06A714021D92330F002D75D3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06A714031D92330F002D75D3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		06A714111D92330F002D75D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		06A714121D92330F002D75D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		06A714141D92330F002D75D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ELog/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Alfredjiang.ELog;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		06A714151D92330F002D75D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ELog/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Alfredjiang.ELog;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		06A714171D92330F002D75D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ELogTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Alfredjiang.ELogTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ELog.app/ELog";
+			};
+			name = Debug;
+		};
+		06A714181D92330F002D75D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ELogTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Alfredjiang.ELogTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ELog.app/ELog";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06A713EC1D92330E002D75D3 /* Build configuration list for PBXProject "ELog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06A714111D92330F002D75D3 /* Debug */,
+				06A714121D92330F002D75D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06A714131D92330F002D75D3 /* Build configuration list for PBXNativeTarget "ELog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06A714141D92330F002D75D3 /* Debug */,
+				06A714151D92330F002D75D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06A714161D92330F002D75D3 /* Build configuration list for PBXNativeTarget "ELogTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06A714171D92330F002D75D3 /* Debug */,
+				06A714181D92330F002D75D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 06A713E91D92330E002D75D3 /* Project object */;
+}
