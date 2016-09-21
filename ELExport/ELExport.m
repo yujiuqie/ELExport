@@ -52,6 +52,8 @@
     NSString *print = [[NSString alloc] initWithFormat:formatString arguments:args];
     va_end(args);
     
+    NSLog(@"%@",print);
+    
     [_writeQueue addOperationWithBlock:^{
         
         NSString *file = [[NSString alloc] initWithBytes:source length:strlen(source) encoding:NSUTF8StringEncoding];

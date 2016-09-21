@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "ELExport.h"
 
 @interface ELogTests : XCTestCase
 
@@ -24,16 +25,12 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
+- (void)testAdd {
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+    for (NSInteger i = 0; i < 1000; i++) {
+        
+        ELog(@"%ld. Test String",i);
+    }
 }
 
 @end
