@@ -1,4 +1,4 @@
 language: objective-c
-xcode_project: Elog.xcodeproj
-xcode_scheme: Elog
+xcode_project: ELog.xcodeproj
+xcode_scheme: ELog
 osx_image: xcode7.3.1
