@@ -15,6 +15,17 @@
 #define ELog(s, ...) {}
 #endif
 
+@interface ELEModel : NSObject
+
+@property (nonatomic, strong) NSString *path;
+@property (nonatomic, assign) NSInteger index;
+@property (nonatomic, strong) NSString *file;
+@property (nonatomic, strong) NSString *function;
+@property (nonatomic, assign) NSInteger lineNumber;
+@property (nonatomic, strong) NSString *print;
+
+@end
+
 @interface ELExport : NSObject
 
 + (instancetype)sharedExport;
@@ -22,6 +33,8 @@
 - (void)file:(char*)source function:(char*)functionName lineNumber:(NSInteger)lineNumber formatString:(NSString*)formatString, ...;
 
 - (NSString *)logFilePath;
+
+- (NSArray<ELEModel *> *)allLogs;
 
 - (void)clearAllLogs;
 

@@ -9,6 +9,18 @@
 #import "ELExport.h"
 #import <objc/runtime.h>
 
+@implementation ELEModel
+
+- (void)setPath:(NSString *)path
+{
+    _path = path;
+    
+    NSData *data = [NSData dataWithContentsOfFile:_path];
+    
+}
+
+@end
+
 @interface ELExport()
 {
     CFRunLoopRef runLoop;
@@ -16,7 +28,7 @@
 }
 
 @property (nonatomic, strong) NSMutableArray *tempInfos;
-@property (nonatomic, strong) NSLock *writeLock;
+@property (nonatomic, strong) NSLock *rwLock;
 @property (nonatomic, strong) NSOperationQueue *writeQueue;
 @property (nonatomic, strong) NSString *logFilePath;
 
@@ -37,7 +49,7 @@
         _sharedExport.writeQueue = [[NSOperationQueue alloc] init];
         _sharedExport.writeQueue.maxConcurrentOperationCount = 1;
         
-        _sharedExport.writeLock = [[NSLock alloc] init];
+        _sharedExport.rwLock = [[NSLock alloc] init];
         
         [_sharedExport registerMainRunloopObserver];
     });
@@ -59,15 +71,15 @@
         NSString *file = [[NSString alloc] initWithBytes:source length:strlen(source) encoding:NSUTF8StringEncoding];
         NSString *function = [NSString stringWithCString: functionName encoding:NSUTF8StringEncoding];
         index++;
-        [self writeLine:[NSString stringWithFormat:@"%ld;%@;%@;%ld;%@",index,file,function,lineNumber,print]];
+        [self writeLine:[NSString stringWithFormat:@"%ld;%@;%@;%ld;\"%@\"",index,file,function,lineNumber,print]];
     }];
 }
 
 - (void)writeLine:(NSString *)line{
     
-    [_writeLock lock];
+    [_rwLock lock];
     [_tempInfos addObject:line];
-    [_writeLock unlock];
+    [_rwLock unlock];
     
     if ([_tempInfos count] >= ELog_Max_Temp_Line_Count) {
         
@@ -75,12 +87,19 @@
     }
 }
 
+- (NSString *)logDirectory
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *logDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:ELOG_EXPORT_DIRECTORY_NAME];
+    
+    return logDirectory;
+}
+
 - (NSString *)logFilePath{
     
     if (!_logFilePath) {
         
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *logDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:ELOG_EXPORT_DIRECTORY_NAME];
+        NSString *logDirectory = [self logDirectory];
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
         BOOL fileExists = [fileManager fileExistsAtPath:logDirectory];
@@ -102,10 +121,39 @@
     return _logFilePath;
 }
 
+- (NSArray<ELEModel *> *)allLogs
+{
+    NSString *logDirectory = [self logDirectory];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL fileExists = [fileManager fileExistsAtPath:logDirectory];
+    
+    if (!fileExists) {
+        
+        return @[];
+    }
+    
+    [_rwLock lock];
+
+    NSArray<NSString *> *items = [fileManager contentsOfDirectoryAtPath:logDirectory error:nil];
+    
+    NSMutableArray<ELEModel *> *result = [NSMutableArray array];
+    
+    [items enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        ELEModel *model = [[ELEModel alloc] init];
+        model.path = [logDirectory stringByAppendingFormat:@"/%@",obj];
+        [result addObject:model];
+    }];
+    
+    [_rwLock unlock];
+    
+    return result;
+}
+
 - (void)clearAllLogs{
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *logDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:ELOG_EXPORT_DIRECTORY_NAME];
+    NSString *logDirectory = [self logDirectory];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL fileExists = [fileManager fileExistsAtPath:logDirectory];
@@ -132,10 +180,10 @@
     
     NSLog(@"保存文件");
     
-    [_writeLock lock];
+    [_rwLock lock];
     __block NSArray *needWriteLines = [_tempInfos copy];
     [_tempInfos removeAllObjects];
-    [_writeLock unlock];
+    [_rwLock unlock];
     
     [_writeQueue addOperationWithBlock:^{
         
