@@ -25,6 +25,8 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
+                   An easy and safe way to export log file. 
+                   Using ELog instead of NSLog you can get more information from log file in Disk.
                    DESC
 
   s.homepage     = "http://viktyz.github.io/ELExport"
