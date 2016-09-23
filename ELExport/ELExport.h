@@ -15,7 +15,7 @@
 #define ELog(s, ...) {}
 #endif
 
-@interface ELEModel : NSObject
+@interface ELELog : NSObject
 
 @property (nonatomic, strong) NSString *path;
 @property (nonatomic, assign) NSInteger index;
@@ -23,6 +23,18 @@
 @property (nonatomic, strong) NSString *function;
 @property (nonatomic, assign) NSInteger lineNumber;
 @property (nonatomic, strong) NSString *print;
+
+- (instancetype)initWithInfo:(NSString *)info;
+
+@end
+
+@interface ELEFile : NSObject
+
+@property (nonatomic, strong) NSString *path;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSArray<ELELog *> *allLogs;
+
+- (instancetype)initWithPath:(NSString *)path;
 
 @end
 
@@ -34,8 +46,8 @@
 
 - (NSString *)logFilePath;
 
-- (NSArray<ELEModel *> *)allLogs;
+- (NSArray<ELEFile *> *)allLogFiles;
 
-- (void)clearAllLogs;
+- (void)clearAllLogFiles;
 
 @end

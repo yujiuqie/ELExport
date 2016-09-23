@@ -17,20 +17,43 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    [[ELExport sharedExport] clearAllLogFiles];
+    
+    NSArray *files_0 = [[ELExport sharedExport] allLogFiles];
+    
+    XCTAssertTrue([files_0 count] == 0,@"files_0 count should be 0");
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    [[ELExport sharedExport] clearAllLogFiles];
+    
+    NSArray *files_2 = [[ELExport sharedExport] allLogFiles];
+    
+    XCTAssertTrue([files_2 count] == 0,@"files_2 count should be 0");
+    
     [super tearDown];
 }
 
-- (void)testAdd {
+- (void)testELExport {
 
     for (NSInteger i = 0; i < 1000; i++) {
         
         ELog(@"%ld. Test String",i);
     }
+    
+    NSArray *files_1 = [[ELExport sharedExport] allLogFiles];
+    
+    XCTAssertTrue([files_1 count] == 1,@"files_1 count should be 1");
+    
+    ELEFile *file = [files_1 firstObject];
+    
+    XCTAssertTrue([file.allLogs count] == 1000,@"file logs count should be 1000 : %ld",[file.allLogs count]);
+    
+    ELELog *log_0 = [file.allLogs objectAtIndex:0];
+    
+    NSLog(@"%ld;%@;%@;%ld;\"%@\"",log_0.index,log_0.file,log_0.function,log_0.lineNumber,log_0.print);
 }
 
 @end

@@ -9,14 +9,78 @@
 #import "ELExport.h"
 #import <objc/runtime.h>
 
-@implementation ELEModel
+@implementation ELELog
 
-- (void)setPath:(NSString *)path
+- (instancetype)initWithInfo:(NSString *)info
 {
-    _path = path;
+    self = [super init];
     
-    NSData *data = [NSData dataWithContentsOfFile:_path];
+    if (self) {
+        
+        NSArray *items_0 = [info componentsSeparatedByString:@";\""];
+        
+        if ([items_0 count] != 2) {
+            
+            return self;
+        }
+        
+        NSString *preInfo = [items_0 firstObject];
+        NSArray *items_1 = [preInfo componentsSeparatedByString:@";"];
+        
+        if ([items_1 count] != 4) {
+            
+            return self;
+        }
+        
+        _print = [items_0 lastObject];
+        
+        _index = [[items_1 objectAtIndex:0] integerValue];
+        _file = [items_1 objectAtIndex:1];
+        _function = [items_1 objectAtIndex:2];
+        _lineNumber = [[items_1 objectAtIndex:3] integerValue];
+    }
+    return self;
+}
+
+@end
+
+@implementation ELEFile
+
+- (instancetype)initWithPath:(NSString *)path
+{
+    self = [super init];
     
+    if (self) {
+        
+        _path = path;
+        _name = [path lastPathComponent];
+        
+        NSStringEncoding encoding;
+        NSError *error = nil;
+        NSString *strInfo = [NSString stringWithContentsOfFile:_path usedEncoding:&encoding error:&error];
+        
+        if (error) {
+            
+            NSLog(@"\n%lu\n%@",(unsigned long)encoding,error);
+            
+            return self;
+        }
+        
+        NSArray<NSString *> *lines = [strInfo componentsSeparatedByString:@"\"\n"];
+        
+        NSMutableArray *logs = [NSMutableArray array];
+        
+        [lines enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            ELELog *log = [[ELELog alloc] initWithInfo:obj];
+            log.path = path;
+            [logs addObject:log];
+        }];
+        
+        _allLogs = logs;
+    }
+    
+    return self;
 }
 
 @end
@@ -121,7 +185,7 @@
     return _logFilePath;
 }
 
-- (NSArray<ELEModel *> *)allLogs
+- (NSArray<ELEFile *> *)allLogFiles
 {
     NSString *logDirectory = [self logDirectory];
     
@@ -134,16 +198,21 @@
     }
     
     [_rwLock lock];
-
+    
     NSArray<NSString *> *items = [fileManager contentsOfDirectoryAtPath:logDirectory error:nil];
     
-    NSMutableArray<ELEModel *> *result = [NSMutableArray array];
+    NSMutableArray<ELEFile *> *result = [NSMutableArray array];
     
     [items enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        ELEModel *model = [[ELEModel alloc] init];
-        model.path = [logDirectory stringByAppendingFormat:@"/%@",obj];
-        [result addObject:model];
+        NSString *path = [logDirectory stringByAppendingFormat:@"/%@",obj];
+
+        ELEFile *model = [[ELEFile alloc] initWithPath:path];
+        
+        if ([model.allLogs count] != 0) {
+            
+            [result addObject:model];
+        }
     }];
     
     [_rwLock unlock];
@@ -151,7 +220,7 @@
     return result;
 }
 
-- (void)clearAllLogs{
+- (void)clearAllLogFiles{
     
     NSString *logDirectory = [self logDirectory];
     

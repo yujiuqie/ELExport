@@ -41,7 +41,7 @@
 
 - (IBAction)clickClearButton:(UIButton *)sender {
     
-    [[ELExport sharedExport] clearAllLogs];
+    [[ELExport sharedExport] clearAllLogFiles];
 }
 
 @end
