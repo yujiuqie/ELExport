@@ -27,7 +27,7 @@
 
 - (void)testELExport {
     
-    for (NSInteger i = 0; i < 500; i++) {
+    for (NSInteger i = 0; i < 50; i++) {
         
         [self logOperation:i];
     }
@@ -41,7 +41,7 @@
     
     XCTAssertTrue([files_0 count] == 0,@"files_0 count should be 0");
     
-    NSInteger randomCount = random() % 20000 + 10;
+    NSInteger randomCount = random() % 200 + 10;
     
     for (NSInteger i = 0; i < randomCount; i++) {
         
