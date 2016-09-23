@@ -5,12 +5,12 @@
 [![Analytics](https://ga-beacon.appspot.com/UA-76943272-1/elexport/readme)](https://github.com/igrigorik/ga-beacon)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ELExport.svg)](https://img.shields.io/cocoapods/v/ELExport.svg)
 
-ELExport is an easy and safe way to export log file. Using ELog instead of NSLog you can get more information from log file in Disk.
+`ELExport` is an easy and safe way to export log file. Using `ELog` instead of `NSLog` you can get more information from log file in Disk.
 
 ## How To Get Started
 
-- [Download ELExport](https://github.com/viktyz/ELExport.git) and try out the included iOS example project ELog.xcodeproj.
-- Also you can try ELogTests.m's test case to learn how to use the methods in ELExport.h.
+- [Download ELExport](https://github.com/viktyz/ELExport.git) and try out the included iOS example project `ELog.xcodeproj`.
+- Also you can try ELogTests.m's test case to learn how to use the methods in `ELExport.h`.
 
 ## Communication
 
@@ -58,7 +58,7 @@ $ pod install
 
 ## Usage
 
-After import 'ELExport.h' in the code file where you want to export log to file in disk, just try to replace *NSLog* with *ELog*.
+After import `ELExport.h` in the code file where you want to export log to file in disk, just try to replace `NSLog` with `ELog`.
 Then all the logs will saved to file in disk automaticly in the right time and safe way.
 
 ## License
