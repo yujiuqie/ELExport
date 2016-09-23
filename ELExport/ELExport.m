@@ -110,9 +110,6 @@
         
         _sharedExport.tempInfos = [NSMutableArray array];
         
-        _sharedExport.writeQueue = [[NSOperationQueue alloc] init];
-        _sharedExport.writeQueue.maxConcurrentOperationCount = 1;
-        
         _sharedExport.rwLock = [[NSLock alloc] init];
         
         [_sharedExport registerMainRunloopObserver];
@@ -123,6 +120,7 @@
 
 - (void)file:(char*)source function:(char*)functionName lineNumber:(NSInteger)lineNumber formatString:(NSString*)formatString, ...
 {
+    [_rwLock lock];
     va_list args;
     va_start(args,formatString);
     NSString *print = [[NSString alloc] initWithFormat:formatString arguments:args];
@@ -130,20 +128,16 @@
     
     NSLog(@"%@",print);
     
-    [_writeQueue addOperationWithBlock:^{
-        
-        NSString *file = [[NSString alloc] initWithBytes:source length:strlen(source) encoding:NSUTF8StringEncoding];
-        NSString *function = [NSString stringWithCString: functionName encoding:NSUTF8StringEncoding];
-        index++;
-        [self writeLine:[NSString stringWithFormat:@"%ld;%@;%@;%ld;\"%@\"",index,file,function,lineNumber,print]];
-    }];
+    NSString *file = [[NSString alloc] initWithBytes:source length:strlen(source) encoding:NSUTF8StringEncoding];
+    NSString *function = [NSString stringWithCString: functionName encoding:NSUTF8StringEncoding];
+    index++;
+    [self writeLine:[NSString stringWithFormat:@"%ld;%@;%@;%ld;\"%@\"",index,file,function,lineNumber,print]];
+    [_rwLock unlock];
 }
 
 - (void)writeLine:(NSString *)line{
     
-    [_rwLock lock];
     [_tempInfos addObject:line];
-    [_rwLock unlock];
     
     if ([_tempInfos count] >= ELog_Max_Temp_Line_Count) {
         
@@ -187,9 +181,12 @@
 
 - (NSArray<ELEFile *> *)allLogFiles
 {
+    [self synchronize];
+    
     NSString *logDirectory = [self logDirectory];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    
     BOOL fileExists = [fileManager fileExistsAtPath:logDirectory];
     
     if (!fileExists) {
@@ -206,7 +203,7 @@
     [items enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         NSString *path = [logDirectory stringByAppendingFormat:@"/%@",obj];
-
+        
         ELEFile *model = [[ELEFile alloc] initWithPath:path];
         
         if ([model.allLogs count] != 0) {
@@ -221,6 +218,8 @@
 }
 
 - (void)clearAllLogFiles{
+    
+    [self synchronize];
     
     NSString *logDirectory = [self logDirectory];
     
@@ -242,23 +241,26 @@
 
 - (void)save{
     
+    [self.writeQueue addOperationWithBlock:^{
+        
+        [self synchronize];
+    }];
+}
+
+- (void)synchronize
+{
     if ([_tempInfos count] == 0) {
         
         return;
     }
-    
-    NSLog(@"保存文件");
     
     [_rwLock lock];
     __block NSArray *needWriteLines = [_tempInfos copy];
     [_tempInfos removeAllObjects];
     [_rwLock unlock];
     
-    [_writeQueue addOperationWithBlock:^{
-        
-        [self writeLines:needWriteLines];
-        needWriteLines = nil;
-    }];
+    [self writeLines:needWriteLines];
+    needWriteLines = nil;
 }
 
 #pragma mark -
@@ -283,8 +285,6 @@
     }
     else{
         
-        NSLog(@"写入文件");
-        
         NSString * result = [NSString stringWithFormat:@"\n%@",[[lines valueForKey:@"description"] componentsJoinedByString:@"\n"]];
         NSData *buffer = [result dataUsingEncoding:NSUTF8StringEncoding];
         
@@ -292,6 +292,20 @@
         [outFile writeData:buffer];
         [outFile closeFile];
     }
+}
+
+#pragma mark -
+
+- (NSOperationQueue *)writeQueue
+{
+    if (!_writeQueue)
+    {
+        _writeQueue = [[NSOperationQueue alloc] init];
+        [_writeQueue setSuspended:YES];
+        [_writeQueue setMaxConcurrentOperationCount:1];
+    }
+    
+    return _writeQueue;
 }
 
 #pragma mark -

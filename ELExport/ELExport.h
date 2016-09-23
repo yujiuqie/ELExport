@@ -44,6 +44,8 @@
 
 - (void)file:(char*)source function:(char*)functionName lineNumber:(NSInteger)lineNumber formatString:(NSString*)formatString, ...;
 
+- (void)synchronize;
+
 - (NSString *)logFilePath;
 
 - (NSArray<ELEFile *> *)allLogFiles;
