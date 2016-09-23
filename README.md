@@ -5,16 +5,16 @@
 [![Analytics](https://ga-beacon.appspot.com/UA-76943272-1/elexport/readme)](https://github.com/igrigorik/ga-beacon)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ELExport.svg)](https://img.shields.io/cocoapods/v/ELExport.svg)
 
-`ELExport` is an easy and safe way to export log file. Using `ELog` instead of `NSLog` you can get more information from log file in Disk.
+`ELExport` is an easy and safe way to export log file. Using `ELog` instead of `NSLog` you can get more information from log file in disk.
 
 ## How To Get Started
 
 - [Download ELExport](https://github.com/viktyz/ELExport.git) and try out the included iOS example project `ELog.xcodeproj`.
-- Also you can try ELogTests.m's test case to learn how to use the methods in `ELExport.h`.
+- Also you can try test cases in `ELogTests.m` to learn how to use the methods in `ELExport.h`.
 
 ## Communication
 
-- If you'd like to **ask a general question**, send an email to [66745628@qq.com](66745628@qq.com).
+- If you'd like to **ask a general question**, send email to [66745628@qq.com](66745628@qq.com).
 - If you **found a bug**, _and can provide steps to reliably reproduce it_, open an issue.
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
