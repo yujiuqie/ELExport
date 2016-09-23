@@ -68,7 +68,7 @@
         
         NSArray<NSString *> *lines = [strInfo componentsSeparatedByString:@"\"\n"];
         
-        NSMutableArray *logs = [NSMutableArray array];
+        NSMutableArray<ELELog *> *logs = [NSMutableArray array];
         
         [lines enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
