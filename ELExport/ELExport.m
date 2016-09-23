@@ -131,7 +131,7 @@
     NSString *file = [[NSString alloc] initWithBytes:source length:strlen(source) encoding:NSUTF8StringEncoding];
     NSString *function = [NSString stringWithCString: functionName encoding:NSUTF8StringEncoding];
     index++;
-    [self writeLine:[NSString stringWithFormat:@"%ld;%@;%@;%ld;\"%@\"",index,file,function,lineNumber,print]];
+    [self writeLine:[NSString stringWithFormat:@"%ld;%@;%@;%ld;\"%@\"",(long)index,file,function,(long)lineNumber,print]];
     [_rwLock unlock];
 }
 
