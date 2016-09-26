@@ -29,7 +29,7 @@
 $ gem install cocoapods
 ```
 
-> CocoaPods 0.39.0+ is required to build ELExport 0.0.2.
+> CocoaPods 0.39.0+ is required to build ELExport 0.0.3.
 
 #### Podfile
 
@@ -40,7 +40,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '7.0'
 
 target 'TargetName' do
-pod 'ELExport', '~> 0.0.2'
+pod 'ELExport', '~> 0.0.3'
 end
 ```
 

@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ELExport"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "An easy and safe way to export log file"
 
   # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-                   Using ELog instead of NSLog you can get more information from log file in Disk
+                   Using ELog instead of NSLog you can get more information from log file in disk
                    DESC
 
   s.homepage     = "http://viktyz.github.io/ELExport"
