@@ -93,13 +93,17 @@
 
 @property (nonatomic, strong) NSMutableArray *tempInfos;
 @property (nonatomic, strong) NSLock *rwLock;
-@property (nonatomic, strong) NSOperationQueue *writeQueue;
 @property (nonatomic, strong) NSString *logFilePath;
 @property (nonatomic, assign, readwrite) BOOL enbaleElog;
 
 @end
 
 @implementation ELExport
+
++ (void)load
+{
+     [[ELExport sharedExport] registerMainRunloopObserver];
+}
 
 + (instancetype)sharedExport{
     
@@ -116,8 +120,6 @@
         _sharedExport.enbaleElog = YES;
         
         _sharedExport.maxTempLineCount = 25;
-        
-        [_sharedExport registerMainRunloopObserver];
     });
     
     return _sharedExport;
@@ -166,7 +168,7 @@
     
     if ([_tempInfos count] >= self.maxTempLineCount) {
         
-        [self save];
+        [self synchronize];
     }
 }
 
@@ -264,14 +266,6 @@
     }];
 }
 
-- (void)save{
-    
-    [self.writeQueue addOperationWithBlock:^{
-        
-        [self synchronize];
-    }];
-}
-
 - (void)synchronize
 {
     if ([_tempInfos count] == 0) {
@@ -321,25 +315,11 @@
 
 #pragma mark -
 
-- (NSOperationQueue *)writeQueue
-{
-    if (!_writeQueue)
-    {
-        _writeQueue = [[NSOperationQueue alloc] init];
-        [_writeQueue setSuspended:YES];
-        [_writeQueue setMaxConcurrentOperationCount:1];
-    }
-    
-    return _writeQueue;
-}
-
-#pragma mark -
-
 static void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
     
     if (activity == kCFRunLoopBeforeWaiting) {
         
-        [[ELExport sharedExport] save];
+        [[ELExport sharedExport] synchronize];
     }
 }
 

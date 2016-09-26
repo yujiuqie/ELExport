@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "06A713F01D92330E002D75D3"
-               BuildableName = "ELog.app"
-               BlueprintName = "ELog"
+               BlueprintIdentifier = "06AF51471D98E994002502A7"
+               BuildableName = "ELExport.framework"
+               BlueprintName = "ELExport"
                ReferencedContainer = "container:ELog.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,33 +28,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "06A714091D92330F002D75D3"
-               BuildableName = "ELogTests.xctest"
-               BlueprintName = "ELogTests"
-               ReferencedContainer = "container:ELog.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "06AF51501D98E994002502A7"
-               BuildableName = "ELExportTests.xctest"
-               BlueprintName = "ELExportTests"
-               ReferencedContainer = "container:ELog.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "06A713F01D92330E002D75D3"
-            BuildableName = "ELog.app"
-            BlueprintName = "ELog"
+            BlueprintIdentifier = "06AF51471D98E994002502A7"
+            BuildableName = "ELExport.framework"
+            BlueprintName = "ELExport"
             ReferencedContainer = "container:ELog.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -71,16 +51,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "06A713F01D92330E002D75D3"
-            BuildableName = "ELog.app"
-            BlueprintName = "ELog"
+            BlueprintIdentifier = "06AF51471D98E994002502A7"
+            BuildableName = "ELExport.framework"
+            BlueprintName = "ELExport"
             ReferencedContainer = "container:ELog.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -90,16 +69,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "06A713F01D92330E002D75D3"
-            BuildableName = "ELog.app"
-            BlueprintName = "ELog"
+            BlueprintIdentifier = "06AF51471D98E994002502A7"
+            BuildableName = "ELExport.framework"
+            BlueprintName = "ELExport"
             ReferencedContainer = "container:ELog.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

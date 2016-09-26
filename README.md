@@ -52,7 +52,6 @@ $ pod install
 
 ## Architecture
 
-- `ELELog`
 - `ELEFile`
 - `ELExport`
 
@@ -60,6 +59,10 @@ $ pod install
 
 After import `ELExport.h` in the code file where you want to export log to file in disk, just try to replace `NSLog` with `ELog`.
 Then all the logs will saved to file in disk automaticly in the right time and safe way.
+
+## Known issues
+
+Any important log record, be sure to use `[[ELExport sharedExport] synchronize]` to keep it in sync.
 
 ## License
 ```

@@ -25,7 +25,18 @@
     [super tearDown];
 }
 
-- (void)testELExport {
+- (void)testSynchronizeELog{
+    
+    ELog(@"test 1");
+    ELog(@"test 2");
+    ELog([[ELExport sharedExport] logFilePath]);
+    ELog(@"test 3");
+    ELog(@"test 4");
+    
+    [[ELExport sharedExport] synchronize];
+}
+
+- (void)testExportLogOperation {
     
     for (NSInteger i = 0; i < 50; i++) {
         
