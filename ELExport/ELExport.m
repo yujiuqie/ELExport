@@ -95,6 +95,7 @@
 @property (nonatomic, strong) NSLock *rwLock;
 @property (nonatomic, strong) NSOperationQueue *writeQueue;
 @property (nonatomic, strong) NSString *logFilePath;
+@property (nonatomic, assign, readwrite) BOOL enbaleElog;
 
 @end
 
@@ -112,10 +113,29 @@
         
         _sharedExport.rwLock = [[NSLock alloc] init];
         
+        _sharedExport.enbaleElog = YES;
+        
+        _sharedExport.maxTempLineCount = 25;
+        
         [_sharedExport registerMainRunloopObserver];
     });
     
     return _sharedExport;
+}
+
+- (void)enableELog:(BOOL)enable
+{
+    _enbaleElog = enable;
+}
+
+- (NSString *)exportDirectoryName
+{
+    return _exportDirectoryName ? _exportDirectoryName : @"ELog";
+}
+
+- (NSString *)exportFileType
+{
+    return _exportFileType ? _exportFileType : @"csv";
 }
 
 - (void)file:(char*)source function:(char*)functionName lineNumber:(NSInteger)lineNumber formatString:(NSString*)formatString, ...
@@ -128,6 +148,11 @@
     
     NSLog(@"%@",print);
     
+    if (!_enbaleElog) {
+        
+        return;
+    }
+    
     NSString *file = [[NSString alloc] initWithBytes:source length:strlen(source) encoding:NSUTF8StringEncoding];
     NSString *function = [NSString stringWithCString: functionName encoding:NSUTF8StringEncoding];
     index++;
@@ -139,7 +164,7 @@
     
     [_tempInfos addObject:line];
     
-    if ([_tempInfos count] >= ELog_Max_Temp_Line_Count) {
+    if ([_tempInfos count] >= self.maxTempLineCount) {
         
         [self save];
     }
@@ -148,7 +173,7 @@
 - (NSString *)logDirectory
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *logDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:ELOG_EXPORT_DIRECTORY_NAME];
+    NSString *logDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:self.exportDirectoryName];
     
     return logDirectory;
 }
@@ -171,7 +196,7 @@
         [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
         [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         NSString *dateStr = [formatter stringFromDate:[NSDate date]];
-        _logFilePath = [logDirectory stringByAppendingFormat:@"/%@.%@",dateStr,ELog_Export_File_Type];
+        _logFilePath = [logDirectory stringByAppendingFormat:@"/%@.%@",dateStr,self.exportFileType];
         
         NSLog(@"ELog Export Path : %@",_logFilePath);
     }

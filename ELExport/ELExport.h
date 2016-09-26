@@ -7,13 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ELConfig.h"
 
-#ifdef ELOG_OPEN
 #define ELog(s, ...) [[ELExport sharedExport] file:__FILE__ function: (char *)__FUNCTION__ lineNumber:__LINE__ formatString:(s),##__VA_ARGS__]
-#else
-#define ELog(s, ...) {}
-#endif
 
 @interface ELELog : NSObject
 
@@ -40,7 +35,14 @@
 
 @interface ELExport : NSObject
 
+@property (nonatomic, assign, readonly) BOOL enbaleElog;        //Default is 'YES'
+@property (nonatomic, assign) NSInteger maxTempLineCount;       //Default is '25'
+@property (nonatomic, strong) NSString *exportDirectoryName;    //Default is 'ELog'
+@property (nonatomic, strong) NSString *exportFileType;         //Default is 'csv'
+
 + (instancetype)sharedExport;
+
+- (void)enableELog:(BOOL)enable;
 
 - (void)file:(char*)source function:(char*)functionName lineNumber:(NSInteger)lineNumber formatString:(NSString*)formatString, ...;
 
