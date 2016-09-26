@@ -1,9 +1,10 @@
 # ELExport
 
 [![Build Status](https://travis-ci.org/viktyz/ELExport.svg?branch=master)](https://travis-ci.org/viktyz/ELExport)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ELExport.svg)](https://img.shields.io/cocoapods/v/ELExport.svg)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 [![Analytics](https://ga-beacon.appspot.com/UA-76943272-1/elexport/readme)](https://github.com/igrigorik/ga-beacon)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ELExport.svg)](https://img.shields.io/cocoapods/v/ELExport.svg)
 
 `ELExport` is an easy and safe way to export log file. Using `ELog` instead of `NSLog` you can get more information from log file in disk.
 
@@ -49,6 +50,25 @@ Then, run the following command:
 ```bash
 $ pod install
 ```
+
+### Installation with Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate ELExport into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "viktyz/ELExport" ~> 0.0.3
+```
+
+Run `carthage` to build the framework and drag the built `ELExport.framework` into your Xcode project.
 
 ## Architecture
 
