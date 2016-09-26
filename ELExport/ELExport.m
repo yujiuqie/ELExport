@@ -92,7 +92,7 @@
 }
 
 @property (nonatomic, strong) NSMutableArray *tempInfos;
-@property (nonatomic, strong) NSLock *rwLock;
+@property (nonatomic, strong) NSRecursiveLock *rwLock;
 @property (nonatomic, strong) NSString *logFilePath;
 @property (nonatomic, assign, readwrite) BOOL enbaleElog;
 
@@ -115,7 +115,7 @@
         
         _sharedExport.tempInfos = [NSMutableArray array];
         
-        _sharedExport.rwLock = [[NSLock alloc] init];
+        _sharedExport.rwLock = [[NSRecursiveLock alloc] init];
         
         _sharedExport.enbaleElog = YES;
         
