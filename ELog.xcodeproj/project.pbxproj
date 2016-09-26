@@ -16,29 +16,13 @@
 		06A714041D92330F002D75D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06A714021D92330F002D75D3 /* LaunchScreen.storyboard */; };
 		06A7140F1D92330F002D75D3 /* ELogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A7140E1D92330F002D75D3 /* ELogTests.m */; };
 		06AF514B1D98E994002502A7 /* ELExport.h in Headers */ = {isa = PBXBuildFile; fileRef = 06AF514A1D98E994002502A7 /* ELExport.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06AF51521D98E994002502A7 /* ELExport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AF51481D98E994002502A7 /* ELExport.framework */; };
 		06AF515D1D98E994002502A7 /* ELExport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AF51481D98E994002502A7 /* ELExport.framework */; };
 		06AF515E1D98E994002502A7 /* ELExport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06AF51481D98E994002502A7 /* ELExport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		06AF51661D98E9EC002502A7 /* ELExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 0652DB7A1D9287720098A2E4 /* ELExport.m */; };
-		06AF516D1D98F665002502A7 /* ELExportTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AF51581D98E994002502A7 /* ELExportTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		06A7140B1D92330F002D75D3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 06A713E91D92330E002D75D3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 06A713F01D92330E002D75D3;
-			remoteInfo = ELog;
-		};
-		06AF51531D98E994002502A7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 06A713E91D92330E002D75D3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 06AF51471D98E994002502A7;
-			remoteInfo = ELExport;
-		};
-		06AF51551D98E994002502A7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06A713E91D92330E002D75D3 /* Project object */;
 			proxyType = 1;
@@ -87,9 +71,6 @@
 		06AF51481D98E994002502A7 /* ELExport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ELExport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		06AF514A1D98E994002502A7 /* ELExport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELExport.h; sourceTree = "<group>"; };
 		06AF514C1D98E994002502A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		06AF51511D98E994002502A7 /* ELExportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ELExportTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		06AF51581D98E994002502A7 /* ELExportTests.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = ELExportTests.m; sourceTree = "<group>"; };
-		06AF515A1D98E994002502A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,14 +96,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		06AF514E1D98E994002502A7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				06AF51521D98E994002502A7 /* ELExport.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -142,7 +115,6 @@
 				06A713F31D92330F002D75D3 /* ELog */,
 				06A7140D1D92330F002D75D3 /* ELogTests */,
 				06AF51491D98E994002502A7 /* ELExport */,
-				06AF51571D98E994002502A7 /* ELExportTests */,
 				06A713F21D92330E002D75D3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -153,7 +125,6 @@
 				06A713F11D92330E002D75D3 /* ELog.app */,
 				06A7140A1D92330F002D75D3 /* ELogTests.xctest */,
 				06AF51481D98E994002502A7 /* ELExport.framework */,
-				06AF51511D98E994002502A7 /* ELExportTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,15 +169,6 @@
 				06AF514C1D98E994002502A7 /* Info.plist */,
 			);
 			path = ELExport;
-			sourceTree = "<group>";
-		};
-		06AF51571D98E994002502A7 /* ELExportTests */ = {
-			isa = PBXGroup;
-			children = (
-				06AF51581D98E994002502A7 /* ELExportTests.m */,
-				06AF515A1D98E994002502A7 /* Info.plist */,
-			);
-			path = ELExportTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,25 +240,6 @@
 			productReference = 06AF51481D98E994002502A7 /* ELExport.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		06AF51501D98E994002502A7 /* ELExportTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 06AF51651D98E994002502A7 /* Build configuration list for PBXNativeTarget "ELExportTests" */;
-			buildPhases = (
-				06AF514D1D98E994002502A7 /* Sources */,
-				06AF514E1D98E994002502A7 /* Frameworks */,
-				06AF514F1D98E994002502A7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				06AF51541D98E994002502A7 /* PBXTargetDependency */,
-				06AF51561D98E994002502A7 /* PBXTargetDependency */,
-			);
-			name = ELExportTests;
-			productName = ELExportTests;
-			productReference = 06AF51511D98E994002502A7 /* ELExportTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -319,11 +262,6 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 6XJR89BS6M;
 					};
-					06AF51501D98E994002502A7 = {
-						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 6XJR89BS6M;
-						TestTargetID = 06A713F01D92330E002D75D3;
-					};
 				};
 			};
 			buildConfigurationList = 06A713EC1D92330E002D75D3 /* Build configuration list for PBXProject "ELog" */;
@@ -342,7 +280,6 @@
 				06A713F01D92330E002D75D3 /* ELog */,
 				06A714091D92330F002D75D3 /* ELogTests */,
 				06AF51471D98E994002502A7 /* ELExport */,
-				06AF51501D98E994002502A7 /* ELExportTests */,
 			);
 		};
 /* End PBXProject section */
@@ -366,13 +303,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		06AF51461D98E994002502A7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		06AF514F1D98E994002502A7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -409,14 +339,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		06AF514D1D98E994002502A7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				06AF516D1D98F665002502A7 /* ELExportTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -424,16 +346,6 @@
 			isa = PBXTargetDependency;
 			target = 06A713F01D92330E002D75D3 /* ELog */;
 			targetProxy = 06A7140B1D92330F002D75D3 /* PBXContainerItemProxy */;
-		};
-		06AF51541D98E994002502A7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 06AF51471D98E994002502A7 /* ELExport */;
-			targetProxy = 06AF51531D98E994002502A7 /* PBXContainerItemProxy */;
-		};
-		06AF51561D98E994002502A7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 06A713F01D92330E002D75D3 /* ELog */;
-			targetProxy = 06AF51551D98E994002502A7 /* PBXContainerItemProxy */;
 		};
 		06AF515C1D98E994002502A7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -632,30 +544,6 @@
 			};
 			name = Release;
 		};
-		06AF51611D98E994002502A7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = ELExportTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Alfredjiang.ELExportTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ELog.app/ELog";
-			};
-			name = Debug;
-		};
-		06AF51621D98E994002502A7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = ELExportTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Alfredjiang.ELExportTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ELog.app/ELog";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -693,14 +581,7 @@
 				06AF51601D98E994002502A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		06AF51651D98E994002502A7 /* Build configuration list for PBXNativeTarget "ELExportTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				06AF51611D98E994002502A7 /* Debug */,
-				06AF51621D98E994002502A7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

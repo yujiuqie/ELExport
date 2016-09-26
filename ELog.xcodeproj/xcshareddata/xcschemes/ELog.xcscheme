@@ -38,16 +38,6 @@
                ReferencedContainer = "container:ELog.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "06AF51501D98E994002502A7"
-               BuildableName = "ELExportTests.xctest"
-               BlueprintName = "ELExportTests"
-               ReferencedContainer = "container:ELog.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
