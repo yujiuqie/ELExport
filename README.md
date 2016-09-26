@@ -1,6 +1,7 @@
 # ELExport
 
 [![Build Status](https://travis-ci.org/viktyz/ELExport.svg?branch=master)](https://travis-ci.org/viktyz/ELExport)
+[![codecov](https://codecov.io/gh/viktyz/ELExport/branch/master/graph/badge.svg)](https://codecov.io/gh/viktyz/ELExport)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ELExport.svg)](https://img.shields.io/cocoapods/v/ELExport.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
