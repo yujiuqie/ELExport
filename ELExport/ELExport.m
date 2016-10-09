@@ -119,6 +119,8 @@
         
         _sharedExport.enbaleElog = YES;
         
+        _sharedExport.stringEncoding = NSASCIIStringEncoding;
+        
         _sharedExport.maxTempLineCount = 25;
     });
     
@@ -155,8 +157,8 @@
         return;
     }
     
-    NSString *file = [[NSString alloc] initWithBytes:source length:strlen(source) encoding:NSUTF8StringEncoding];
-    NSString *function = [NSString stringWithCString: functionName encoding:NSUTF8StringEncoding];
+    NSString *file = [[NSString alloc] initWithBytes:source length:strlen(source) encoding:_stringEncoding];
+    NSString *function = [NSString stringWithCString: functionName encoding:_stringEncoding];
     index++;
     [self writeLine:[NSString stringWithFormat:@"%ld;%@;%@;%ld;\"%@\"",(long)index,file,function,(long)lineNumber,print]];
     [_rwLock unlock];

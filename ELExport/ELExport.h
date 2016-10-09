@@ -37,6 +37,7 @@
 
 @property (nonatomic, assign, readonly) BOOL enbaleElog;        //Default is 'YES'
 @property (nonatomic, assign) NSInteger maxTempLineCount;       //Default is '25'
+@property (nonatomic, assign) NSStringEncoding stringEncoding;  //Default is 'NSASCIIStringEncoding'
 @property (nonatomic, strong) NSString *exportDirectoryName;    //Default is 'ELog'
 @property (nonatomic, strong) NSString *exportFileType;         //Default is 'csv'
 
