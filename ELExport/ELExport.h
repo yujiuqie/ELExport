@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSString *path;
 @property (nonatomic, assign) NSInteger index;
+@property (nonatomic, strong) NSString *status;
 @property (nonatomic, strong) NSString *file;
 @property (nonatomic, strong) NSString *function;
 @property (nonatomic, assign) NSInteger lineNumber;

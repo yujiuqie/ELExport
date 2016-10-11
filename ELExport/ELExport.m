@@ -19,26 +19,37 @@
         
         NSArray *items_0 = [info componentsSeparatedByString:@";\""];
         
-        if ([items_0 count] != 2) {
+        if ([items_0 count] < 3) {
             
             return self;
         }
         
+        //Index , Status , Function , Line
         NSString *preInfo = [items_0 firstObject];
         NSArray *items_1 = [preInfo componentsSeparatedByString:@";"];
         
-        if ([items_1 count] != 4) {
+        if ([items_1 count] == 3) { //Normal : ELog
             
-            return self;
+            _index = [[items_1 objectAtIndex:0] integerValue];
+            _function = [items_1 objectAtIndex:1];
+            _lineNumber = [[items_1 objectAtIndex:2] integerValue];
+        }
+        else{   //With Status : ESLog
+            
+            NSInteger tCount = [items_1 count];
+            
+            _index = [[items_1 objectAtIndex:0] integerValue];
+            _status = [[items_1 subarrayWithRange:NSMakeRange(1, (tCount - 3))] componentsJoinedByString:@";"];
+            _function = [items_1 objectAtIndex:(tCount - 2)];
+            _lineNumber = [[items_1 objectAtIndex:(tCount - 1)] integerValue];
         }
         
-        _print = [items_0 lastObject];
+        NSString *pInfo = [items_0 objectAtIndex:1];
+        _print = [pInfo substringWithRange:NSMakeRange(0, [pInfo length] - 1)];
         
-        _index = [[items_1 objectAtIndex:0] integerValue];
-        _file = [items_1 objectAtIndex:1];
-        _function = [items_1 objectAtIndex:2];
-        _lineNumber = [[items_1 objectAtIndex:3] integerValue];
+        _file = [items_0 objectAtIndex:2];
     }
+    
     return self;
 }
 
@@ -102,7 +113,7 @@
 
 + (void)load
 {
-     [[ELExport sharedExport] registerMainRunloopObserver];
+    [[ELExport sharedExport] registerMainRunloopObserver];
 }
 
 + (instancetype)sharedExport{
@@ -160,7 +171,7 @@
     NSString *file = [[NSString alloc] initWithBytes:source length:strlen(source) encoding:_stringEncoding];
     NSString *function = [NSString stringWithCString: functionName encoding:_stringEncoding];
     index++;
-    [self writeLine:[NSString stringWithFormat:@"%ld;%@;%ld;\"%@\";%@",(long)index,function,(long)lineNumber,print,file]];
+    [self writeLine:[NSString stringWithFormat:@"%ld;%@;%ld;\"%@\";\"%@\"",(long)index,function,(long)lineNumber,print,file]];
     [_rwLock unlock];
 }
 
@@ -182,7 +193,7 @@
     NSString *file = [[NSString alloc] initWithBytes:source length:strlen(source) encoding:_stringEncoding];
     NSString *function = [NSString stringWithCString: functionName encoding:_stringEncoding];
     index++;
-    [self writeLine:[NSString stringWithFormat:@"%ld;%@;%@;%ld;\"%@\";%@",(long)index,status,function,(long)lineNumber,print,file]];
+    [self writeLine:[NSString stringWithFormat:@"%ld;%@;%@;%ld;\"%@\";\"%@\"",(long)index,status,function,(long)lineNumber,print,file]];
     [_rwLock unlock];
 }
 
