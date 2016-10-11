@@ -10,6 +10,8 @@
 
 #define ELog(s, ...) [[ELExport sharedExport] file:__FILE__ function: (char *)__FUNCTION__ lineNumber:__LINE__ formatString:(s),##__VA_ARGS__]
 
+#define ESLog(__status__,s, ...) [[ELExport sharedExport] file:__FILE__ status:__status__ function: (char *)__FUNCTION__ lineNumber:__LINE__ formatString:(s),##__VA_ARGS__]
+
 @interface ELELog : NSObject
 
 @property (nonatomic, strong) NSString *path;
@@ -46,6 +48,8 @@
 - (void)enableELog:(BOOL)enable;
 
 - (void)file:(char*)source function:(char*)functionName lineNumber:(NSInteger)lineNumber formatString:(NSString*)formatString, ...;
+
+- (void)file:(char*)source status:(NSString *)status function:(char*)functionName lineNumber:(NSInteger)lineNumber formatString:(NSString*)formatString, ...;
 
 - (void)synchronize;
 

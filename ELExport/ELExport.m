@@ -160,7 +160,29 @@
     NSString *file = [[NSString alloc] initWithBytes:source length:strlen(source) encoding:_stringEncoding];
     NSString *function = [NSString stringWithCString: functionName encoding:_stringEncoding];
     index++;
-    [self writeLine:[NSString stringWithFormat:@"%ld;%@;%@;%ld;\"%@\"",(long)index,file,function,(long)lineNumber,print]];
+    [self writeLine:[NSString stringWithFormat:@"%ld;%@;%ld;\"%@\";%@",(long)index,function,(long)lineNumber,print,file]];
+    [_rwLock unlock];
+}
+
+- (void)file:(char*)source status:(NSString *)status function:(char*)functionName lineNumber:(NSInteger)lineNumber formatString:(NSString*)formatString, ...
+{
+    [_rwLock lock];
+    va_list args;
+    va_start(args,formatString);
+    NSString *print = [[NSString alloc] initWithFormat:formatString arguments:args];
+    va_end(args);
+    
+    NSLog(@"%@ : %@",status,print);
+    
+    if (!_enbaleElog) {
+        
+        return;
+    }
+    
+    NSString *file = [[NSString alloc] initWithBytes:source length:strlen(source) encoding:_stringEncoding];
+    NSString *function = [NSString stringWithCString: functionName encoding:_stringEncoding];
+    index++;
+    [self writeLine:[NSString stringWithFormat:@"%ld;%@;%@;%ld;\"%@\";%@",(long)index,status,function,(long)lineNumber,print,file]];
     [_rwLock unlock];
 }
 
