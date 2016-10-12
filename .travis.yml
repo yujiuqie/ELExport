@@ -14,7 +14,7 @@ before_deploy:
   - carthage archive $FRAMEWORK_NAME
 script: 
 # xctool -project ELog.xcodeproj -scheme ELog build test -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
-  xcodebuild test -project ELog.xcodeproj -scheme ELog -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0'
+  xcodebuild test -project ELog.xcodeproj -scheme ELog -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3'
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
