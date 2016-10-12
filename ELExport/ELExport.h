@@ -48,16 +48,34 @@
 
 - (void)enableELog:(BOOL)enable;
 
-- (void)file:(char*)source function:(char*)functionName lineNumber:(NSInteger)lineNumber formatString:(NSString*)formatString, ...;
+#pragma mark - String Tools
 
-- (void)file:(char*)source status:(NSString *)status function:(char*)functionName lineNumber:(NSInteger)lineNumber formatString:(NSString*)formatString, ...;
+- (NSString*)stringFromObject:(id)object
+                     encoding:(NSStringEncoding)encoding;
 
-- (void)synchronize;
+#pragma mark - Write file
+
+- (void)file:(char*)source
+    function:(char*)functionName
+  lineNumber:(NSInteger)lineNumber
+formatString:(NSString*)formatString, ...;
+
+- (void)file:(char*)source
+      status:(NSString *)status
+    function:(char*)functionName
+  lineNumber:(NSInteger)lineNumber
+formatString:(NSString*)formatString, ...;
+
+#pragma mark - Log
 
 - (NSString *)logFilePath;
 
 - (NSArray<ELEFile *> *)allLogFiles;
 
 - (void)clearAllLogFiles;
+
+#pragma mark - Synchronize
+
+- (void)synchronize;
 
 @end

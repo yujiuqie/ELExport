@@ -153,6 +153,29 @@
     return _exportFileType ? _exportFileType : @"csv";
 }
 
+#pragma mark -
+
+- (NSString*)stringFromObject:(id)object encoding:(NSStringEncoding)encoding
+{
+    if (!object || ![NSJSONSerialization isValidJSONObject:object]) {
+        
+        return @"";
+    }
+    
+    NSString *jsonString = @"";
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object
+                                                       options:0
+                                                         error:&error];
+    
+    if (jsonData){
+        
+        jsonString = [[NSString alloc] initWithData:jsonData encoding:encoding];
+    }
+    
+    return jsonString;
+}
+
 - (void)file:(char*)source function:(char*)functionName lineNumber:(NSInteger)lineNumber formatString:(NSString*)formatString, ...
 {
     [_rwLock lock];
@@ -196,6 +219,8 @@
     [self writeLine:[NSString stringWithFormat:@"%ld;%@;%@;%ld;\"%@\";\"%@\"",(long)index,status,function,(long)lineNumber,print,file]];
     [_rwLock unlock];
 }
+
+#pragma mark -
 
 - (void)writeLine:(NSString *)line{
     

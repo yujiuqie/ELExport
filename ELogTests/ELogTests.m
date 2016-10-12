@@ -22,6 +22,8 @@
 
 - (void)tearDown {
     
+    [[ELExport sharedExport] synchronize];
+    
     [super tearDown];
 }
 
@@ -38,11 +40,23 @@
 
 - (void)testSynchronizeStatusELog{
     
-    ELog(@"STATUS;TYPE_1",@"test 1");
-    ELog(@"STATUS;TYPE_2");
-    ELog([[ELExport sharedExport] logFilePath]);
-    ELog(@"STATUS;TYPE_3");
-    ELog(@"STATUS;TYPE_4");
+    ESLog(@"STATUS;TYPE_1",@"test 1");
+    ESLog(@"STATUS;TYPE_2",@"test 1");
+    ESLog(@"STATUS;TYPE_3",[[ELExport sharedExport] logFilePath]);
+    ESLog(@"STATUS;TYPE_4",@"test 1");
+    ESLog(@"STATUS;TYPE_5",@"test 1");
+    NSString *testString = [NSString stringWithFormat:@"%@;%@;%@;%d;\"%@\"",
+                            @"STATUS;TYPE_6",
+                            @"Test_String_1",
+                            @"Test_String_2",
+                            1000,
+                            [[ELExport sharedExport] stringFromObject:@{
+                                                                        @"test_key_1" :@"test_value_1",
+                                                                        @"test_key_2" :@"test_value_2",
+                                                                        @"test_key_3" :@3
+                                                                        }
+                                                             encoding:NSASCIIStringEncoding]];
+    ESLog(testString,@"STATUS;TYPE_4");
     
     [[ELExport sharedExport] synchronize];
 }
@@ -76,11 +90,11 @@
     
     ELEFile *file = [files_1 firstObject];
     
-    XCTAssertTrue([file.allLogs count] == randomCount,@"file logs count should be %ld : %ld",randomCount,[file.allLogs count]);
+    XCTAssertTrue([file.allLogs count] == randomCount,@"file logs count should be %ld : %ld",(long)randomCount,(unsigned long)[file.allLogs count]);
     
     ELELog *log_0 = [file.allLogs objectAtIndex:random()%randomCount];
     
-    NSLog(@"%ld;%@;%@;%ld;\"%@\"",log_0.index,log_0.file,log_0.function,log_0.lineNumber,log_0.print);
+    NSLog(@"%ld;%@;%@;%ld;\"%@\"",(long)log_0.index,log_0.file,log_0.function,(long)log_0.lineNumber,log_0.print);
 }
 
 - (void)testExportStatusLogOperation {
@@ -112,11 +126,11 @@
     
     ELEFile *file = [files_1 firstObject];
     
-    XCTAssertTrue([file.allLogs count] == randomCount,@"file logs count should be %ld : %ld",randomCount,[file.allLogs count]);
+    XCTAssertTrue([file.allLogs count] == randomCount,@"file logs count should be %ld : %ld",(long)(long)randomCount,(unsigned long)[file.allLogs count]);
     
     ELELog *log_0 = [file.allLogs objectAtIndex:random()%randomCount];
     
-    NSLog(@"%ld;%@;%@;%@;%ld;\"%@\"",log_0.index,log_0.status,log_0.file,log_0.function,log_0.lineNumber,log_0.print);
+    NSLog(@"%ld;%@;%@;%@;%ld;\"%@\"",(long)log_0.index,log_0.status,log_0.file,log_0.function,(long)log_0.lineNumber,log_0.print);
 }
 
 @end
