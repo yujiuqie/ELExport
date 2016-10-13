@@ -1,28 +1,35 @@
 //
-//  ELogTests.m
-//  ELogTests
+//  ELogInstanceTests.m
+//  ELog
 //
-//  Created by viktyz on 16/9/21.
+//  Created by viktyz on 16/10/13.
 //  Copyright © 2016年 AlfredJiang. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 #import "ELExport.h"
 
-@interface ELogTests : XCTestCase
+@interface ELogInstanceTests : XCTestCase
+
+@property (nonatomic, strong) ELExport *export;
 
 @end
 
-@implementation ELogTests
+@implementation ELogInstanceTests
 
 - (void)setUp {
+    
+    if (!_export) {
+        
+        _export = [[ELExport alloc] initWithLogDirectoryName:@"InstanceELog" easyLogDirectoryName:@"InstanceEasyELog"];
+    }
     
     [super setUp];
 }
 
 - (void)tearDown {
     
-    [[ELExport sharedExport] synchronize];
+    [_export synchronize];
     
     [super tearDown];
 }
@@ -31,18 +38,18 @@
     
     ELog(@"test 1");
     ELog(@"test 2");
-    ELog([[ELExport sharedExport] logFilePath]);
+    ELog([_export logFilePath]);
     ELog(@"test 3");
     ELog(@"test 4");
     
-    [[ELExport sharedExport] synchronize];
+    [_export synchronize];
 }
 
 - (void)testSynchronizeStatusELog{
     
     ESLog(@"STATUS;TYPE_1",@"test 1");
     ESLog(@"STATUS;TYPE_2",@"test 1");
-    ESLog(@"STATUS;TYPE_3",[[ELExport sharedExport] logFilePath]);
+    ESLog(@"STATUS;TYPE_3",[_export logFilePath]);
     ESLog(@"STATUS;TYPE_4",@"test 1");
     ESLog(@"STATUS;TYPE_5",@"test 1");
     NSString *testString = [NSString stringWithFormat:@"%@;%@;%@;%d;\"%@\"",
@@ -50,7 +57,7 @@
                             @"Test_String_1",
                             @"Test_String_2",
                             1000,
-                            [[ELExport sharedExport] stringFromObject:@{
+                            [_export stringFromObject:@{
                                                                         @"test_key_1" :@"test_value_1",
                                                                         @"test_key_2" :@"test_value_2",
                                                                         @"test_key_3" :@3
@@ -58,7 +65,7 @@
                                                              encoding:NSASCIIStringEncoding]];
     ESLog(testString,@"STATUS;TYPE_4");
     
-    [[ELExport sharedExport] synchronize];
+    [_export synchronize];
 }
 
 - (void)testExportLogOperation {
@@ -71,9 +78,9 @@
 
 - (void)logOperation:(NSInteger)index
 {
-    [[ELExport sharedExport] clearAllLogFiles];
+    [_export clearAllLogFiles];
     
-    NSArray *files_0 = [[ELExport sharedExport] allLogFiles];
+    NSArray *files_0 = [_export allLogFiles];
     
     XCTAssertTrue([files_0 count] == 0,@"files_0 count should be 0");
     
@@ -84,7 +91,7 @@
         ELog(@"%ld index %ld. Test String in %ld",index,i,randomCount);
     }
     
-    NSArray *files_1 = [[ELExport sharedExport] allLogFiles];
+    NSArray *files_1 = [_export allLogFiles];
     
     XCTAssertTrue([files_1 count] == 1,@"files_1 count should be 1");
     
@@ -107,9 +114,9 @@
 
 - (void)statusLogOperation:(NSInteger)index
 {
-    [[ELExport sharedExport] clearAllLogFiles];
+    [_export clearAllLogFiles];
     
-    NSArray *files_0 = [[ELExport sharedExport] allLogFiles];
+    NSArray *files_0 = [_export allLogFiles];
     
     XCTAssertTrue([files_0 count] == 0,@"files_0 count should be 0");
     
@@ -120,7 +127,7 @@
         ESLog(@"Status;Type_1;Type_2;Type_3;Type_4",@"%ld index %ld. Test String in %ld",index,i,randomCount);
     }
     
-    NSArray *files_1 = [[ELExport sharedExport] allLogFiles];
+    NSArray *files_1 = [_export allLogFiles];
     
     XCTAssertTrue([files_1 count] == 1,@"files_1 count should be 1");
     
@@ -135,20 +142,20 @@
 
 - (void)testEasyLog
 {
-    [[ELExport sharedExport] clearAllEasyLogFiles];
+    [_export clearAllEasyLogFiles];
     
-    XCTAssertTrue([[[[ELExport sharedExport] allEasyLogFiles] allKeys] count] == 0,@"easy files should be empty after clear all files");
+    XCTAssertTrue([[[_export allEasyLogFiles] allKeys] count] == 0,@"easy files should be empty after clear all files");
     
     NSInteger iCount = 10;
     
     for (NSInteger index = 0; index < iCount ; index ++) {
         
-        NSString *easyLogPath = [[ELExport sharedExport] easyWriteString:[NSString stringWithFormat:@"Test_Info_%ld",(long)index] toFile:[NSString stringWithFormat:@"Test_File_%ld",(long)index]];
+        NSString *easyLogPath = [_export easyWriteString:[NSString stringWithFormat:@"Test_Info_%ld",(long)index] toFile:[NSString stringWithFormat:@"Test_File_%ld",(long)index]];
         
-        ESLog([[ELExport sharedExport] easyLogDirectoryPath],easyLogPath);
+        ESLog([_export easyLogDirectoryPath],easyLogPath);
     }
     
-    XCTAssertTrue([[[[ELExport sharedExport] allEasyLogFiles] allKeys] count] == iCount,@"easy files count should be equal to filename's count");
+    XCTAssertTrue([[[_export allEasyLogFiles] allKeys] count] == iCount,@"easy files count should be equal to filename's count");
 }
 
 @end

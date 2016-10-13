@@ -38,13 +38,18 @@
 
 @interface ELExport : NSObject
 
-@property (nonatomic, assign, readonly) BOOL enbaleElog;        //Default is 'YES'
-@property (nonatomic, assign) NSInteger maxTempLineCount;       //Default is '25'
-@property (nonatomic, assign) NSStringEncoding stringEncoding;  //Default is 'NSASCIIStringEncoding'
-@property (nonatomic, strong) NSString *exportDirectoryName;    //Default is 'ELog'
-@property (nonatomic, strong) NSString *exportFileType;         //Default is 'csv'
+@property (nonatomic, assign, readonly) BOOL enbaleElog;            //Default is 'YES'
+@property (nonatomic, assign) NSInteger maxTempLineCount;           //Default is '25'
+@property (nonatomic, assign) NSStringEncoding stringEncoding;      //Default is 'NSUTF8StringEncoding'
+@property (nonatomic, strong) NSString *exportDirectoryName;        //Default is 'ELog'
+@property (nonatomic, strong) NSString *easyExportDirectoryName;    //Default is 'Easy_Export'
+@property (nonatomic, strong) NSString *exportFileName;             //Default is string type of date
+@property (nonatomic, strong) NSString *exportFileType;             //Default is 'csv'
 
 + (instancetype)sharedExport;
+
+- (instancetype)initWithLogDirectoryName:(NSString *)directoryName
+                    easyLogDirectoryName:(NSString *)easyDirectoryName;
 
 - (void)enableELog:(BOOL)enable;
 
@@ -52,6 +57,9 @@
 
 - (NSString*)stringFromObject:(id)object
                      encoding:(NSStringEncoding)encoding;
+
+- (NSString *)easyWriteString:(NSString *)string
+                       toFile:(NSString *)fileName;
 
 #pragma mark - Write file
 
@@ -73,6 +81,14 @@ formatString:(NSString*)formatString, ...;
 - (NSArray<ELEFile *> *)allLogFiles;
 
 - (void)clearAllLogFiles;
+
+#pragma mark - Easy Log
+
+- (NSString *)easyLogDirectoryPath;
+
+- (NSDictionary *)allEasyLogFiles;
+
+- (void)clearAllEasyLogFiles;
 
 #pragma mark - Synchronize
 
