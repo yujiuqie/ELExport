@@ -12,6 +12,10 @@
 
 #define ESLog(__status__,s, ...) [[ELExport sharedExport] file:__FILE__ status:__status__ function: (char *)__FUNCTION__ lineNumber:__LINE__ formatString:(s),##__VA_ARGS__]
 
+#define EILog(__instance__,s, ...) [__instance__ file:__FILE__ function: (char *)__FUNCTION__ lineNumber:__LINE__ formatString:(s),##__VA_ARGS__]
+
+#define EISLog(__instance__,__status__,s, ...) [__instance__ file:__FILE__ status:__status__ function: (char *)__FUNCTION__ lineNumber:__LINE__ formatString:(s),##__VA_ARGS__]
+
 @interface ELELog : NSObject
 
 @property (nonatomic, strong) NSString *path;

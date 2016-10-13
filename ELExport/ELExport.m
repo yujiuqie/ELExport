@@ -185,7 +185,7 @@
 {
     if (!_exportFileName) {
         
-        _exportFileName = [_formatter stringFromDate:[NSDate date]];
+        _exportFileName = [self.formatter stringFromDate:[NSDate date]];
     }
     
     return _exportFileName;
@@ -239,7 +239,7 @@
         targetFileName = [NSString stringWithFormat:@"E_%@",[self exportFileName]];
     }
     
-    NSString *defaultPath = [self pathWithDirectoryName:@"Easy_Export" FileName:targetFileName fileType:@"txt"];
+    NSString *defaultPath = [self pathWithDirectoryName:self.easyExportDirectoryName FileName:targetFileName fileType:@"txt"];
     
     [_rwLock lock];
     

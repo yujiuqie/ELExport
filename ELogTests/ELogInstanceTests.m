@@ -36,22 +36,22 @@
 
 - (void)testSynchronizeELog{
     
-    ELog(@"test 1");
-    ELog(@"test 2");
-    ELog([_export logFilePath]);
-    ELog(@"test 3");
-    ELog(@"test 4");
+    EILog(_export,@"test 1");
+    EILog(_export,@"test 2");
+    EILog(_export,[_export logFilePath]);
+    EILog(_export,@"test 3");
+    EILog(_export,@"test 4");
     
     [_export synchronize];
 }
 
 - (void)testSynchronizeStatusELog{
     
-    ESLog(@"STATUS;TYPE_1",@"test 1");
-    ESLog(@"STATUS;TYPE_2",@"test 1");
-    ESLog(@"STATUS;TYPE_3",[_export logFilePath]);
-    ESLog(@"STATUS;TYPE_4",@"test 1");
-    ESLog(@"STATUS;TYPE_5",@"test 1");
+    EISLog(_export,@"STATUS;TYPE_1",@"test 1");
+    EISLog(_export,@"STATUS;TYPE_2",@"test 1");
+    EISLog(_export,@"STATUS;TYPE_3",[_export logFilePath]);
+    EISLog(_export,@"STATUS;TYPE_4",@"test 1");
+    EISLog(_export,@"STATUS;TYPE_5",@"test 1");
     NSString *testString = [NSString stringWithFormat:@"%@;%@;%@;%d;\"%@\"",
                             @"STATUS;TYPE_6",
                             @"Test_String_1",
@@ -63,7 +63,7 @@
                                                                         @"test_key_3" :@3
                                                                         }
                                                              encoding:NSASCIIStringEncoding]];
-    ESLog(testString,@"STATUS;TYPE_4");
+    EISLog(_export,testString,@"STATUS;TYPE_4");
     
     [_export synchronize];
 }
@@ -88,7 +88,7 @@
     
     for (NSInteger i = 0; i < randomCount; i++) {
         
-        ELog(@"%ld index %ld. Test String in %ld",index,i,randomCount);
+        EILog(_export,@"%ld index %ld. Test String in %ld",index,i,randomCount);
     }
     
     NSArray *files_1 = [_export allLogFiles];
@@ -124,7 +124,7 @@
     
     for (NSInteger i = 0; i < randomCount; i++) {
         
-        ESLog(@"Status;Type_1;Type_2;Type_3;Type_4",@"%ld index %ld. Test String in %ld",index,i,randomCount);
+        EISLog(_export,@"Status;Type_1;Type_2;Type_3;Type_4",@"%ld index %ld. Test String in %ld",index,i,randomCount);
     }
     
     NSArray *files_1 = [_export allLogFiles];
@@ -152,7 +152,7 @@
         
         NSString *easyLogPath = [_export easyWriteString:[NSString stringWithFormat:@"Test_Info_%ld",(long)index] toFile:[NSString stringWithFormat:@"Test_File_%ld",(long)index]];
         
-        ESLog([_export easyLogDirectoryPath],easyLogPath);
+        EISLog(_export,[_export easyLogDirectoryPath],easyLogPath);
     }
     
     XCTAssertTrue([[[_export allEasyLogFiles] allKeys] count] == iCount,@"easy files count should be equal to filename's count");
