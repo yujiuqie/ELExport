@@ -12,7 +12,7 @@
 ## How To Get Started
 
 - [Download ELExport](https://github.com/viktyz/ELExport.git) and try out the included iOS example project `ELog.xcodeproj`.
-- Also you can try test cases in `ELogTests.m` to learn how to use the methods in `ELExport.h`.
+- Also you can try test cases in `ELogTests.m` and `ELogInstanceTests.m` to learn how to use the methods in `ELExport.h` .
 
 ## Communication
 
